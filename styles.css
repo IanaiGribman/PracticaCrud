@@ -5,12 +5,16 @@
     justify-content: space-around;
 }
 .contenedor_botones > button{
-    width: 35%;
-    height: 100px;
+    width: 20%;
+    height: 70px;
 }
-.contenedor_respuesta{
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
+
+.tabla_respuestas{
+    margin: 30px auto 0 auto;
+    border-collapse: collapse;
+
+}
+.tabla_respuestas, .tabla_respuestas td, .tabla_respuestas tr{
+    border: 1px solid black;
+    padding: 3px;
 }

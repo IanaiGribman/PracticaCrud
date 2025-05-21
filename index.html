@@ -8,14 +8,25 @@
 </head>
 <body>
     <div class="contenedor_botones">
-        <button onclick="Call1()">Boton 1</button>
-        <button onclick="Call2()">Boton 2</button>
+        <button onclick="Call(1)">Añadir persona 1</button>
+        <button onclick="Call(2)">Añadir persona 2</button>
+        <button onclick="Call(3)">Error</button>
+        <button onclick="Borrar()">Borrar</button>
     </div>
     
-    <div class="contenedor_respuesta">
-        <div><h2>Respuesta</h2></div>
-        <div id="respuesta"></div>
-    </div>
+    <table class="tabla_respuestas">
+            <thead>
+                 <tr>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Edad</td>
+                 </tr>
+            </thead>
+            <tbody id="respuesta">
+
+            </tbody>
+    </table>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,15 +1,38 @@
-function Call1(){
-    const res = 'Buenos dias';
-    document.getElementById("respuesta").innerHTML = res;
-}
-async function Call2(){
+async function Call(id) {
     try {
-    const res = await fetch("backend.php");
-    const data = await res.json(); //convierte JSON a string o objeto js
-    document.getElementById("respuesta").innerHTML = data;
-    } catch (error){
+        let persona = await fetch(`backend.php?tipo=${id}`);
+        persona = await persona.json();
+
+
+        const tbody = document.getElementById('respuesta');
+
+        if (typeof persona === 'object' && persona.error) {
+            // Limpiamos la tabla y mostramos mensaje en una fila que ocupa todas las columnas
+            tbody.innerHTML = '';
+            const tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            const td = document.createElement('td');
+            td.colSpan = 3; // Para que ocupe todas las columnas
+            td.textContent = persona.error;
+            tr.appendChild(td);
+            return;
+        }
+
+        
+        const tr = document.createElement('tr');
+        tbody.appendChild(tr);
+
+        for (const [clave, valor] of Object.entries(persona)) {
+            const td = document.createElement('td');
+            td.textContent = valor;
+            tr.appendChild(td);
+        }
+    } catch (error) {
         document.getElementById("respuesta").innerHTML = "Error al obtener la respuesta";
         console.error(error);
     }
 }
-        
+function Borrar(){
+    const tbody = document.getElementById('respuesta');
+    tbody.innerHTML = '';
+}
